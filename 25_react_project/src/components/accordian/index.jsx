@@ -14,6 +14,7 @@ const Accordian = () => {
     let multiple = [...muliState];
     const findIndOfCurrentId = multiple.indexOf(id);
     if (findIndOfCurrentId === -1) {
+      //does not exist
       multiple.push(id);
     } else {
       multiple.splice(findIndOfCurrentId, 1);
@@ -30,17 +31,24 @@ const Accordian = () => {
               <div
                 onClick={
                   enable
-                    ? () => handleSingleSelection(item.id)
-                    : () => handleMultipleState(item.id)
+                    ? () => handleMultipleState(item.id)
+                    : () => handleSingleSelection(item.id)
                 }
                 className="title"
               >
                 <h3>{item.question}</h3>
                 <span>+</span>
               </div>
-              {selected === item.id ? (
+              {enable
+                ? muliState.indexOf(item.id) !== -1 && (
+                    <div className="content">{item.answer}</div>
+                  )
+                : selected === item.id && (
+                    <div className="content">{item.answer}</div>
+                  )}
+              {/* {selected === item.id ? (
                 <div className="content">{item.answer}</div>
-              ) : null}
+              ) : null} */}
             </div>
           ))
         ) : (
