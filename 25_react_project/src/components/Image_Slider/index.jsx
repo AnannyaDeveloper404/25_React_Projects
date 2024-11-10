@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+import "./styles.css";
 const ImageSlider = ({ url, page, limit }) => {
   const [images, setImages] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -23,6 +24,12 @@ const ImageSlider = ({ url, page, limit }) => {
       setLoading(false);
     }
   };
+  function handlePrevious() {
+    setCurrentSlide(currentSlide === 0 ? images.length - 1 : currentSlide - 1);
+  }
+  function handleNext() {
+    setCurrentSlide(currentSlide === images.length - 1 ? 0 : currentSlide + 1);
+  }
   useEffect(() => {
     if (url !== "") fetchImage(url);
   }, [url]);
@@ -35,27 +42,40 @@ const ImageSlider = ({ url, page, limit }) => {
   }
   return (
     <div className="container">
-      <BsArrowLeftCircleFill className="arrow arrow-left" />
+      <BsArrowLeftCircleFill
+        className="arrow arrow-left"
+        onClick={handlePrevious}
+      />
       {images && images.length
-        ? images.map((imagesItem) => (
+        ? images.map((imagesItem, index) => (
             <img
               key={imagesItem.id}
               alt={imagesItem.download_url}
               src={imagesItem.download_url}
-              className="current-image"
+              className={
+                currentSlide === index
+                  ? "current-image"
+                  : "current-image hide-current-image"
+              }
             />
           ))
         : null}
-      <BsArrowRightCircleFill className="" />
+      <BsArrowRightCircleFill
+        className="arrow arrow-right"
+        onClick={handleNext}
+      />
       <span className="circle-indicator">
         {images && images.length
-          ? images.map((imagesItem) => (
-              <img
-                key={imagesItem.id}
-                alt={imagesItem.download_url}
-                src={imagesItem.download_url}
-                className="current-image"
-              />
+          ? images.map((_, index) => (
+              <button
+                key={index}
+                className={
+                  currentSlide === index
+                    ? "current-indicator"
+                    : "current-indicator inactive-indicator"
+                }
+                onClick={() => setCurrentSlide(index)}
+              ></button>
             ))
           : null}
       </span>
