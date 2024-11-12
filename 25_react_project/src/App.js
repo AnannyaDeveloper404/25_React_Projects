@@ -5,6 +5,7 @@ import RandomColor from "./components/Color_Code";
 import StarRating from "./components/star-rating";
 import ImageSlider from "./components/Image_Slider";
 import LoadMoreData from "./components/Load_More_Data";
+import Tree_View from "./components/Tree-View";
 
 function App() {
   return (
@@ -22,7 +23,10 @@ function App() {
         page={"1"}
         limit={"10"}
       /> */}
-      <LoadMoreData />
+      {/* Load more data */}
+      {/* <LoadMoreData /> */}
+      {/* Tree View component */}
+      <Tree_View />
     </div>
   );
 }
