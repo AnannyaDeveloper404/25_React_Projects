@@ -7,6 +7,7 @@ import ImageSlider from "./components/Image_Slider";
 import LoadMoreData from "./components/Load_More_Data";
 import Tree_View from "./components/Tree-View";
 import { menus } from "./components/Tree-View/data";
+import QRCodeGenerator from "./components/qr-code-generator";
 function App() {
   return (
     <div className="App">
@@ -26,7 +27,9 @@ function App() {
       {/* Load more data */}
       {/* <LoadMoreData /> */}
       {/* Tree View component */}
-      <Tree_View menus={menus} />
+      {/* <Tree_View menus={menus} /> */}
+      {/* QR Code generator */}
+      <QRCodeGenerator />
     </div>
   );
 }
