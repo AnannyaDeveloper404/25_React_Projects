@@ -5,6 +5,7 @@ const QRCodeGenerator = () => {
   const [input, setInput] = useState("");
   function handleChange() {
     setQrCode(input);
+    setInput("");
   }
   return (
     <div>
@@ -14,6 +15,7 @@ const QRCodeGenerator = () => {
           onChange={(e) => setInput(e.target.value)}
           type="text"
           name="qr-code"
+          value={input}
           placeholder="Enter your value here"
         />
         <button
