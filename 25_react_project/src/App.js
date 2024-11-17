@@ -9,6 +9,7 @@ import Tree_View from "./components/Tree-View";
 import { menus } from "./components/Tree-View/data";
 import QRCodeGenerator from "./components/qr-code-generator";
 import LightDarkMode from "./components/light-dark mode";
+import ScrollIndicator from "./components/Scroll Indicator";
 function App() {
   return (
     <div className="App">
@@ -32,7 +33,9 @@ function App() {
       {/* QR Code generator */}
       {/* <QRCodeGenerator /> */}
       {/* Light Dark mode theme */}
-      <LightDarkMode />
+      {/* <LightDarkMode /> */}
+      {/* Scroll Indicator */}
+      <ScrollIndicator url={"https://dummyjson.com/products?limit=100"} />
     </div>
   );
 }
