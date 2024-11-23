@@ -18,7 +18,6 @@ function App() {
       {/* <Accordian /> */}
       {/* Random Color Component */}
       {/* <RandomColor /> */}
-
       {/* Star-rating */}
       {/* <StarRating noOfStars={10} /> */}
       {/* Image Slider */}
@@ -34,11 +33,11 @@ function App() {
       {/* QR Code generator */}
       {/* <QRCodeGenerator /> */}
       {/* Light Dark mode theme */}
-      <LightDarkMode />
+      {/* <LightDarkMode /> */}
       {/* Scroll Indicator */}
       {/* <ScrollIndicator url={"https://dummyjson.com/products?limit=100"} /> */}
       {/* Custom tabs component */}
-      <TabTest />
+      {/* <TabTest /> */}
     </div>
   );
 }
