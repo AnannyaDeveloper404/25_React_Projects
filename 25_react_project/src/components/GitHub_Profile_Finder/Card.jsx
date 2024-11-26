@@ -7,7 +7,9 @@ const Card = ({ user }) => {
     <div className="user">
       <div>
         <img src={avatar_url} alt="user" className="avatar" />
-        <a href={url}>{name || login}</a>
+        <div>
+          <a href={url}>{name || login}</a>
+        </div>
       </div>
     </div>
   );
