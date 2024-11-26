@@ -13,6 +13,7 @@ import ScrollIndicator from "./components/Scroll Indicator";
 import TabTest from "./components/custom-tabs/Tab-test";
 import Model_Test from "./components/custom-modal-pop/modal-test";
 import GithubProfileFinder from "./components/GitHub_Profile_Finder";
+import SearchAutoComplete from "./components/search-autocomplete";
 function App() {
   return (
     <div className="App">
@@ -43,7 +44,9 @@ function App() {
       {/* Custom modal component */}
       {/* <Model_Test /> */}
       {/* Github profile fetch */}
-      <GithubProfileFinder />
+      {/* <GithubProfileFinder /> */}
+      {/* Search auto complete */}
+      <SearchAutoComplete />
     </div>
   );
 }
