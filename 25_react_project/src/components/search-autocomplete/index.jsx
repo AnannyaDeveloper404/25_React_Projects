@@ -26,18 +26,33 @@ const SearchAutoComplete = () => {
   useEffect(() => {
     fetchListOfUser();
   }, []);
-  //   console.log(users);
+  console.log(users);
 
   function handleChange(e) {
     const query = e.target.value.toLowerCase();
+    setSearchParam(query);
     if (query.length > 1) {
       const filterData =
         users && users.length
           ? users.filter((item) => item.toLowerCase().indexOf(query) > -1)
           : [];
       setShowDropdown(true);
+
       setFilteredUsers(filterData);
+    } else {
+      setShowDropdown(false);
     }
+  }
+  function handleClick(e) {
+    setShowDropdown(false);
+    setSearchParam(e.target.innerText);
+    setFilteredUsers([]);
+  }
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+  if (error) {
+    return <h1>There is some error...</h1>;
   }
   return (
     <div className="search-autocomplete-container">
@@ -45,9 +60,12 @@ const SearchAutoComplete = () => {
         type="text"
         placeholder="Search Users"
         name="search-users"
+        value={searchParam}
         onChange={handleChange}
       />
-      {showDropdown && <Suggestion data={filteredUsers} />}
+      {showDropdown && (
+        <Suggestion handleClick={handleClick} data={filteredUsers} />
+      )}
     </div>
   );
 };
