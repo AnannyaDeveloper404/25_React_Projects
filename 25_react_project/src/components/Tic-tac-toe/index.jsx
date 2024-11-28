@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 const Square = ({ value, onClick }) => {
   return (
@@ -11,14 +11,51 @@ const Square = ({ value, onClick }) => {
 const TicTacToe = () => {
   const [squares, setSquares] = useState(Array(9).fill(""));
   const [isXTurn, setIsXTurn] = useState(true);
+  const [status, setStatus] = useState("");
   function handleClick(getCurrentSquare) {
-    if (squares[getCurrentSquare] !== "") {
+    if (getWinner(squares) || squares[getCurrentSquare] !== "") {
       return;
     }
     let cpySquares = [...squares];
     cpySquares[getCurrentSquare] = isXTurn ? "X" : "O";
     setIsXTurn(!isXTurn);
     setSquares(cpySquares);
+  }
+  function getWinner(squares) {
+    const winningPattern = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (let i = 0; i < winningPattern.length; i++) {
+      const [x, y, z] = winningPattern[i];
+      if (
+        squares[x] &&
+        squares[x] === squares[y] &&
+        squares[x] === squares[z]
+      ) {
+        return squares[x];
+      }
+    }
+    return null;
+  }
+  useEffect(() => {
+    if (!getWinner(squares) && squares.every((item) => item !== "")) {
+      setStatus("This is a draw ! please restart");
+    } else if (getWinner(squares)) {
+      setStatus(`Winner is ${getWinner(squares)}`);
+    } else {
+      setStatus(`Turn of ${isXTurn ? "X" : "Y"}`);
+    }
+  }, [squares]);
+  function handleRestart() {
+    setIsXTurn(true);
+    setSquares(Array(9).fill(""));
   }
   return (
     <div className="tic-tac-toe-container">
@@ -37,6 +74,8 @@ const TicTacToe = () => {
         <Square value={squares[7]} onClick={() => handleClick(7)} />
         <Square value={squares[8]} onClick={() => handleClick(8)} />
       </div>
+      <h1>{status}</h1>
+      <button onClick={handleRestart}>Restart</button>
     </div>
   );
 };
