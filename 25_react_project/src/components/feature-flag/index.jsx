@@ -7,7 +7,8 @@ import Tree_View from "../Tree-View";
 import { FeatureFlagsContext } from "./context";
 
 export default function FeatureFlags() {
-  const { loading, enabledFlags } = useContext(FeatureFlagsContext);
+  const { loading, enableFlags } = useContext(FeatureFlagsContext);
+  // console.log({ loading, enableFlags }); //
   const componentsToRender = [
     {
       key: "showLightAndDarkMode",
@@ -34,8 +35,8 @@ export default function FeatureFlags() {
       component: <Tree_View />,
     },
   ];
-  function checkEnabledFlag(currKey) {
-    return enabledFlags[currKey];
+  function checkEnabledFlags(currKey) {
+    return enableFlags[currKey];
   }
   if (loading) {
     return <div>Loading....</div>;
@@ -44,8 +45,9 @@ export default function FeatureFlags() {
   return (
     <div>
       <h1>Feature Flags</h1>
-      {componentsToRender.map((item) =>
-        checkEnabledFlag(item.key) ? item.component : null
+
+      {componentsToRender.map((componentItem) =>
+        checkEnabledFlags(componentItem.key) ? componentItem.component : null
       )}
     </div>
   );

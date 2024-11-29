@@ -16,6 +16,8 @@ export default function FeatureFlagGlobalState({ children }) {
       throw new Error(error);
     }
   }
+  // console.log(enableFlags);
+
   useEffect(() => {
     fetchFeatureFlags();
   }, []);

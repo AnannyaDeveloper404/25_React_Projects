@@ -8,7 +8,7 @@ import LoadMoreData from "./components/Load_More_Data";
 import Tree_View from "./components/Tree-View";
 import { menus } from "./components/Tree-View/data";
 import QRCodeGenerator from "./components/qr-code-generator";
-import LightDarkMode from "./components/light-dark mode";
+import LightDarkMode from "./components/light-dark-mode";
 import ScrollIndicator from "./components/Scroll Indicator";
 import TabTest from "./components/custom-tabs/Tab-test";
 import Model_Test from "./components/custom-modal-pop/modal-test";
