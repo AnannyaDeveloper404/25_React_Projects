@@ -17,6 +17,8 @@ import SearchAutoComplete from "./components/search-autocomplete";
 import TicTacToe from "./components/Tic-tac-toe";
 import FeatureFlags from "./components/feature-flag";
 import FeatureFlagGlobalState from "./components/feature-flag/context";
+import UseFetchHookTest from "./components/useFetch/test";
+import UseOnClickOutsideTest from "./components/use-outside-click/test";
 function App() {
   return (
     <div className="App">
@@ -53,9 +55,13 @@ function App() {
       {/* Tic tac toe */}
       {/* <TicTacToe /> */}
       {/* Feature flag implementation */}
-      <FeatureFlagGlobalState>
+      {/* <FeatureFlagGlobalState>
         <FeatureFlags />
-      </FeatureFlagGlobalState>
+      </FeatureFlagGlobalState> */}
+      {/* useFetch -custom Hook */}
+      {/* <UseFetchHookTest /> */}
+      {/* Use onclick outside */}
+      <UseOnClickOutsideTest />
     </div>
   );
 }
